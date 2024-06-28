@@ -43,8 +43,8 @@ fun FunForLazyRow (heroes: List<MarvelHero>,
             modifier = Modifier
                 .padding(20.dp)
                 .clip(shape = RoundedCornerShape(30.dp))
-                .width(300.dp)
-                .height(550.dp)
+                .width(350.dp)
+                .height(700.dp)
         )
 
         Text(
