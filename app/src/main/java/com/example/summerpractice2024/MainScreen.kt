@@ -37,7 +37,7 @@ fun MainScreen(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             bitmap = ImageBitmap.imageResource(R.drawable.marvellogo),
-            contentDescription = "Логотип",
+            contentDescription = "Logo",
             modifier = Modifier
                 .width(200.dp)
                 .height(100.dp)
@@ -65,7 +65,7 @@ fun MainScreen(
             items(heroCount)
             {
                 FunForLazyRow(
-                    hero = heroList,
+                    heroes = heroList,
                     heroIndex = it,
                     navController = navController
                 )

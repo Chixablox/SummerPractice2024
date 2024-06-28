@@ -5,13 +5,19 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
@@ -43,17 +49,31 @@ fun HeroScreen(
                 modifier = Modifier
                     .fillMaxSize()
             )
+
+            IconButton(onClick = {
+                navController.previousBackStackEntry
+                navController.popBackStack()
+            },
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(vertical = 15.dp)
+                    .width(60.dp)
+                    .height(50.dp)
+            ){
+                Icon(
+                    bitmap = ImageBitmap.imageResource(R.drawable.whitearrow),
+                    contentDescription = "Arrow"
+                )
+            }
             Column(modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 60.dp)) {
                 Text(
                     text = heroes[heroIndex].heroName,
                     style = TextStyle(color = Color.White, fontSize = 40.sp, fontWeight = Bold)
-                    //modifier = Modifier.padding(40.dp)
                 )
                 Text(
                     text = heroes[heroIndex].heroDescription,
-                    style = TextStyle(color = Color.White, fontSize = 20.sp, fontWeight = Bold)
-                    //modifier = Modifier.padding(70.dp)
+                    style = TextStyle(color = Color.White, fontSize = 30.sp, fontWeight = Bold)
                 )
             }
         }
