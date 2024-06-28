@@ -56,24 +56,27 @@ fun HeroScreen(
             },
                 modifier = Modifier
                     .align(Alignment.TopStart)
-                    .padding(vertical = 15.dp)
-                    .width(60.dp)
-                    .height(50.dp)
+                    .padding(vertical = 40.dp)
+                    .width(50.dp)
+                    .height(25.dp)
             ){
                 Icon(
-                    bitmap = ImageBitmap.imageResource(R.drawable.whitearrow),
-                    contentDescription = "Arrow"
+                    bitmap = ImageBitmap.imageResource(R.drawable.img),
+                    contentDescription = "Arrow",
+                    modifier = Modifier
+                        .width(50.dp)
+                        .height(25.dp)
                 )
             }
             Column(modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 60.dp)) {
                 Text(
                     text = heroes[heroIndex].heroName,
-                    style = TextStyle(color = Color.White, fontSize = 40.sp, fontWeight = Bold)
+                    style = TextStyle(color = Color.White, fontSize = 34.sp, fontWeight = Bold)
                 )
                 Text(
                     text = heroes[heroIndex].heroDescription,
-                    style = TextStyle(color = Color.White, fontSize = 30.sp, fontWeight = Bold)
+                    style = TextStyle(color = Color.White, fontSize = 24.sp, fontWeight = Bold)
                 )
             }
         }

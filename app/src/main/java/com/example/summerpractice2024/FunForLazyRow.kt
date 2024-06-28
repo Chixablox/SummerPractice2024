@@ -24,7 +24,8 @@ import coil.compose.rememberAsyncImagePainter
 @Composable
 fun FunForLazyRow (heroes: List<MarvelHero>,
                    heroIndex: Int,
-                   navController : NavController){
+                   navController : NavController,
+){
     Box(
         contentAlignment = Alignment.BottomStart,
         modifier = Modifier
@@ -49,7 +50,7 @@ fun FunForLazyRow (heroes: List<MarvelHero>,
         Text(
             text = heroes[heroIndex].heroName,
             style = TextStyle(color= Color.White, fontSize = 32.sp, fontWeight = Bold),
-            modifier = Modifier.padding(30.dp)
+            modifier = Modifier.padding(horizontal = 40.dp, vertical = 50.dp)
         )
     }
 }

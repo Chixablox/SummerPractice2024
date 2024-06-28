@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -23,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,17 +41,21 @@ fun MainScreen(
             bitmap = ImageBitmap.imageResource(R.drawable.marvellogo),
             contentDescription = "Logo",
             modifier = Modifier
-                .width(200.dp)
-                .height(100.dp)
+                .padding(top = 40.dp)
+                .width(256.dp)
+                .height(54.dp)
         )
 
         Text(
             text = "Choose your hero",
             style = TextStyle(
                 color = Color.White,
-                fontSize = 40.sp,
-                fontWeight = Bold
-            )
+                fontSize = 28.sp,
+                fontWeight = Bold,
+                fontStyle = FontStyle.Normal
+            ),
+            modifier = Modifier
+                .padding(top = 30.dp)
         )
         val lazyListState = rememberLazyListState()
         val snapBehavior = rememberSnapFlingBehavior(
@@ -57,7 +63,8 @@ fun MainScreen(
         )
         LazyRow(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(top = 30.dp),
             state = lazyListState,
             flingBehavior = snapBehavior
         ) {
@@ -67,7 +74,7 @@ fun MainScreen(
                 FunForLazyRow(
                     heroes = heroList,
                     heroIndex = it,
-                    navController = navController
+                    navController = navController,
                 )
             }
         }
