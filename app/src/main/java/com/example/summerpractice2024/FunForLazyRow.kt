@@ -1,6 +1,7 @@
 package com.example.summerpractice2024
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,15 +18,22 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
-fun FunForLazyRow (hero: MarvelHero){
+fun FunForLazyRow (heroes: List<MarvelHero>,
+                   heroIndex: Int,
+                   navController : NavController){
     Box(
-        contentAlignment = Alignment.BottomStart
+        contentAlignment = Alignment.BottomStart,
+        modifier = Modifier
+            .clickable {
+                navController.navigate(route= "HeroScreen/$heroIndex")
+            }
     ) {
 
-        val painter = rememberAsyncImagePainter(hero.imageUrl)
+        val painter = rememberAsyncImagePainter(heroes[heroIndex].imageUrl)
 
         Image(
             painter = painter,
@@ -39,7 +47,7 @@ fun FunForLazyRow (hero: MarvelHero){
         )
 
         Text(
-            text = hero.heroName,
+            text = heroes[heroIndex].heroName,
             style = TextStyle(color= Color.White, fontSize = 32.sp, fontWeight = Bold),
             modifier = Modifier.padding(30.dp)
         )
