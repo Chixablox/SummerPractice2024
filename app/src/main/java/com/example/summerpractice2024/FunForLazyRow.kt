@@ -22,9 +22,12 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
-fun FunForLazyRow (heroes: List<MarvelHero>,
-                   heroIndex: Int,
-                   navController : NavController,
+fun FunForLazyRow (
+    heroes: List<MarvelHero>,
+    heroIndex: Int,
+    navController : NavController,
+    width : Int,
+    height: Int
 ){
     Box(
         contentAlignment = Alignment.BottomStart,
@@ -32,6 +35,8 @@ fun FunForLazyRow (heroes: List<MarvelHero>,
             .clickable {
                 navController.navigate(route= "HeroScreen/$heroIndex")
             }
+            .padding(start = (0.1*width).dp, end = (0.1*width).dp)
+
     ) {
 
         val painter = rememberAsyncImagePainter(heroes[heroIndex].imageUrl)
@@ -41,16 +46,15 @@ fun FunForLazyRow (heroes: List<MarvelHero>,
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .padding(20.dp)
                 .clip(shape = RoundedCornerShape(30.dp))
-                .width(350.dp)
-                .height(700.dp)
+                .width((0.8*width).dp)
+                .height((0.6875*height).dp)
         )
 
         Text(
             text = heroes[heroIndex].heroName,
             style = TextStyle(color= Color.White, fontSize = 32.sp, fontWeight = Bold),
-            modifier = Modifier.padding(horizontal = 40.dp, vertical = 50.dp)
+            modifier = Modifier.padding(start = (0.1*(0.8*width)).dp, bottom = (0.05*(0.6875*height)).dp)
         )
     }
 }

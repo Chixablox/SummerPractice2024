@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -27,6 +28,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
+                    val configuration = LocalConfiguration.current
+
+                    val width = configuration.screenWidthDp
+                    val height = configuration.screenHeightDp
+
                     val heroList = listOf(
                         MarvelHero("https://i.postimg.cc/JtwjpygL/image.png",
                             "Deadpool",
@@ -42,7 +49,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "MainScreen"){
                         composable(route = "MainScreen"){
-                            MainScreen(heroList, navController)
+                            MainScreen(heroList, navController, width, height)
                         }
                         composable(route = "HeroScreen/{index}",
                             arguments = listOf(
@@ -54,7 +61,9 @@ class MainActivity : ComponentActivity() {
                            HeroScreen(
                                heroes = heroList,
                                heroIndex = index.arguments?.getInt("index"),
-                               navController = navController
+                               navController = navController,
+                               width = width,
+                               height = height
                            )
                         }
                     }

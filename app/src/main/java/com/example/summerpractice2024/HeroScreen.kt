@@ -1,7 +1,6 @@
 package com.example.summerpractice2024
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,12 +28,13 @@ import coil.compose.rememberAsyncImagePainter
 fun HeroScreen(
     heroes : List<MarvelHero>,
     heroIndex : Int?,
-    navController : NavController
+    navController : NavController,
+    width : Int,
+    height: Int
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(20.dp)
+            .fillMaxSize()
     ) {
         Box(
             contentAlignment = Alignment.BottomStart
@@ -56,20 +56,20 @@ fun HeroScreen(
             },
                 modifier = Modifier
                     .align(Alignment.TopStart)
-                    .padding(vertical = 40.dp)
-                    .width(50.dp)
-                    .height(25.dp)
+                    .padding(top = (0.02*height).dp, start = (0.02*width).dp)
+                    .width((0.1*width).dp)
+                    .height((0.05*height).dp)
             ){
                 Icon(
                     bitmap = ImageBitmap.imageResource(R.drawable.img),
                     contentDescription = "Arrow",
                     modifier = Modifier
-                        .width(50.dp)
-                        .height(25.dp)
+                        .width((0.08*width).dp)
+                        .height((0.04*height).dp)
                 )
             }
             Column(modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 60.dp)) {
+                .padding(start = (0.02*width).dp, bottom = 50.dp)) {
                 Text(
                     text = heroes[heroIndex].heroName,
                     style = TextStyle(color = Color.White, fontSize = 34.sp, fontWeight = Bold)

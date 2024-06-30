@@ -24,7 +24,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,7 +32,9 @@ import androidx.navigation.NavController
 @Composable
 fun MainScreen(
     heroList: List<MarvelHero>,
-    navController: NavController
+    navController: NavController,
+    width : Int,
+    height: Int
 ) {
     BackGround()
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -41,9 +42,9 @@ fun MainScreen(
             bitmap = ImageBitmap.imageResource(R.drawable.marvellogo),
             contentDescription = "Logo",
             modifier = Modifier
-                .padding(top = 40.dp)
-                .width(256.dp)
-                .height(54.dp)
+                .padding(top = (0.0375*height).dp)
+                .width((0.33*width).dp)
+                .height((0.0375*height).dp)
         )
 
         Text(
@@ -51,11 +52,10 @@ fun MainScreen(
             style = TextStyle(
                 color = Color.White,
                 fontSize = 28.sp,
-                fontWeight = Bold,
-                fontStyle = FontStyle.Normal
+                fontWeight = Bold
             ),
             modifier = Modifier
-                .padding(top = 30.dp)
+                .padding(top = (0.0675*height).dp)
         )
         val lazyListState = rememberLazyListState()
         val snapBehavior = rememberSnapFlingBehavior(
@@ -63,8 +63,8 @@ fun MainScreen(
         )
         LazyRow(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 30.dp),
+                .padding(top = (0.08*height).dp)
+                .fillMaxSize(),
             state = lazyListState,
             flingBehavior = snapBehavior
         ) {
@@ -75,6 +75,8 @@ fun MainScreen(
                     heroes = heroList,
                     heroIndex = it,
                     navController = navController,
+                    width = width,
+                    height = height
                 )
             }
         }
@@ -82,7 +84,7 @@ fun MainScreen(
 }
 
 @Composable
-fun BackGround() {
+private fun BackGround() {
     val gradient = Brush.linearGradient(
         0.0f to Color.Black,
         600.0f to Color.Red,
