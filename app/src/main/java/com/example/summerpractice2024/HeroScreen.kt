@@ -9,18 +9,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 
@@ -72,11 +69,11 @@ fun HeroScreen(
                 .padding(start = (0.02*width).dp, bottom = 50.dp)) {
                 Text(
                     text = heroes[heroIndex].heroName,
-                    style = TextStyle(color = Color.White, fontSize = 34.sp, fontWeight = Bold)
+                    style = MaterialTheme.typography.labelMedium
                 )
                 Text(
                     text = heroes[heroIndex].heroDescription,
-                    style = TextStyle(color = Color.White, fontSize = 24.sp, fontWeight = Bold)
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }

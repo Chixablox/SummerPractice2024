@@ -25,8 +25,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SummerPractice2024Theme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize()
                 ) {
 
                     val configuration = LocalConfiguration.current
