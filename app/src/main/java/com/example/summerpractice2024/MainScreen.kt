@@ -79,7 +79,7 @@ fun MainScreen(
 @Composable
 private fun BackGround() {
     val gradient = Brush.linearGradient(
-        0.0f to MaterialTheme.colorScheme.secondary,
+        0.3f to MaterialTheme.colorScheme.secondary,
         3.0f to MaterialTheme.colorScheme.primary,
         start = Offset.Zero,
         end = Offset.Infinite
