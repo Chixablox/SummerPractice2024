@@ -48,7 +48,7 @@ fun FunForLazyRow (
             modifier = Modifier
                 .clip(shape = RoundedCornerShape(30.dp))
                 .width((0.8*width).dp)
-                .height((0.6875*height).dp)
+                .height((0.7*height).dp)
         )
 
         Text(
