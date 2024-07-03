@@ -66,7 +66,7 @@ fun HeroScreen(
                 )
             }
             Column(modifier = Modifier
-                .padding(start = (0.02*width).dp, bottom = 50.dp)) {
+                .padding(start = (0.04*width).dp, bottom = 50.dp)) {
                 Text(
                     text = heroes[heroIndex].heroName,
                     style = MaterialTheme.typography.labelMedium
