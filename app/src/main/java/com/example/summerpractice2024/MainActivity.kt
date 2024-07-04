@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -34,36 +33,42 @@ class MainActivity : ComponentActivity() {
                     val height = configuration.screenHeightDp
 
                     val heroList = listOf(
-                        MarvelHero("https://i.postimg.cc/JtwjpygL/image.png",
+                        MarvelHero(
+                            "https://i.postimg.cc/JtwjpygL/image.png",
                             "Deadpool",
-                            "Please don’t make the super suit green...or animated!"),
-                        MarvelHero("https://i.postimg.cc/1zhQmWZc/image.png",
+                            "Please don’t make the super suit green...or animated!"
+                        ),
+                        MarvelHero(
+                            "https://i.postimg.cc/1zhQmWZc/image.png",
                             "Iron Man",
-                            "I AM IRON MAN"),
-                        MarvelHero("https://i.postimg.cc/vZDNJ5g7/image.png",
+                            "I AM IRON MAN"
+                        ),
+                        MarvelHero(
+                            "https://i.postimg.cc/vZDNJ5g7/image.png",
                             "Spider Man",
-                            "In iron suit")
+                            "In iron suit"
+                        )
                     )
 
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "MainScreen"){
-                        composable(route = "MainScreen"){
+                    NavHost(navController = navController, startDestination = "MainScreen") {
+                        composable(route = "MainScreen") {
                             MainScreen(heroList, navController, width, height)
                         }
                         composable(route = "HeroScreen/{index}",
                             arguments = listOf(
-                                navArgument(name = "index"){
+                                navArgument(name = "index") {
                                     type = NavType.IntType
                                 }
                             )
-                        ){ index ->
-                           HeroScreen(
-                               heroes = heroList,
-                               heroIndex = index.arguments?.getInt("index"),
-                               navController = navController,
-                               width = width,
-                               height = height
-                           )
+                        ) { index ->
+                            HeroScreen(
+                                heroes = heroList,
+                                heroIndex = index.arguments?.getInt("index"),
+                                navController = navController,
+                                width = width,
+                                height = height
+                            )
                         }
                     }
                 }

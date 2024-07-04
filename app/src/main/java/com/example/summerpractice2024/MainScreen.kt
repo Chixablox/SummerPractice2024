@@ -30,7 +30,7 @@ import androidx.navigation.NavController
 fun MainScreen(
     heroList: List<MarvelHero>,
     navController: NavController,
-    width : Int,
+    width: Int,
     height: Int
 ) {
     BackGround()
@@ -39,16 +39,16 @@ fun MainScreen(
             bitmap = ImageBitmap.imageResource(R.drawable.marvellogo),
             contentDescription = "Logo",
             modifier = Modifier
-                .padding(top = (0.0375*height).dp)
-                .width((0.33*width).dp)
-                .height((0.0375*height).dp)
+                .padding(top = (0.0375 * height).dp)
+                .width((0.33 * width).dp)
+                .height((0.0375 * height).dp)
         )
 
         Text(
             text = "Choose your hero",
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
-                .padding(top = (0.0675*height).dp)
+                .padding(top = (0.0675 * height).dp)
         )
         val lazyListState = rememberLazyListState()
         val snapBehavior = rememberSnapFlingBehavior(
@@ -56,7 +56,7 @@ fun MainScreen(
         )
         LazyRow(
             modifier = Modifier
-                .padding(top = (0.08*height).dp)
+                .padding(top = (0.08 * height).dp)
                 .fillMaxSize(),
             state = lazyListState,
             flingBehavior = snapBehavior
@@ -84,7 +84,9 @@ private fun BackGround() {
         start = Offset.Zero,
         end = Offset.Infinite
     )
-    Box(modifier = Modifier
-        .background(gradient)
-        .fillMaxSize())
+    Box(
+        modifier = Modifier
+            .background(gradient)
+            .fillMaxSize()
+    )
 }

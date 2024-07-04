@@ -23,10 +23,10 @@ import coil.compose.rememberAsyncImagePainter
 
 @Composable
 fun HeroScreen(
-    heroes : List<MarvelHero>,
-    heroIndex : Int?,
-    navController : NavController,
-    width : Int,
+    heroes: List<MarvelHero>,
+    heroIndex: Int?,
+    navController: NavController,
+    width: Int,
     height: Int
 ) {
     Column(
@@ -47,26 +47,30 @@ fun HeroScreen(
                     .fillMaxSize()
             )
 
-            IconButton(onClick = {
-                navController.previousBackStackEntry
-                navController.popBackStack()
-            },
+            IconButton(
+                onClick = {
+                    navController.previousBackStackEntry
+                    navController.popBackStack()
+                },
                 modifier = Modifier
                     .align(Alignment.TopStart)
-                    .padding(top = (0.02*height).dp, start = (0.02*width).dp)
-                    .width((0.1*width).dp)
-                    .height((0.05*height).dp)
-            ){
+                    .padding(top = (0.02 * height).dp, start = (0.02 * width).dp)
+                    .width((0.1 * width).dp)
+                    .height((0.05 * height).dp)
+            ) {
                 Icon(
                     bitmap = ImageBitmap.imageResource(R.drawable.img),
                     contentDescription = "Arrow",
+                    tint = MaterialTheme.colorScheme.tertiary,
                     modifier = Modifier
-                        .width((0.08*width).dp)
-                        .height((0.04*height).dp)
+                        .width((0.08 * width).dp)
+                        .height((0.04 * height).dp)
                 )
             }
-            Column(modifier = Modifier
-                .padding(start = (0.04*width).dp, bottom = 50.dp)) {
+            Column(
+                modifier = Modifier
+                    .padding(start = (0.04 * width).dp, bottom = 50.dp)
+            ) {
                 Text(
                     text = heroes[heroIndex].heroName,
                     style = MaterialTheme.typography.labelMedium
